@@ -282,30 +282,31 @@ fi
 echo "Downloading export JCL"
 curl -s ${BASE_URL}/zosmf/restfiles/ds/${DSN} -k -X "GET" -H "Content-Type: application/json" -H "X-CSRF-ZOSMF-HEADER: A" --user $ZOSMF_USER:$ZOSMF_PASS > EXPORT
 
-if [ "$ZOSMF_V" = "2.3" ]
-then
-echo "Changing jobcard and adding SYSAFF"
-sed "s|//IZUD01EX JOB (ACCOUNT),'NAME'|$JOBST1\n$JOBST2|g" EXPORT > EXPJCL0
-
-echo "Changing working directory from /tmp/ to ${WORK_MOUNT} directory where is zFS mounted"
-sed "s|//SMPWKDIR DD PATH='/tmp/.*'|//SMPWKDIR DD PATH='$WORK_MOUNT'|g" EXPJCL0 > EXPJCL1
-
-echo "Switching WORKFLOW and CSI datasets because of internal GIMZIP setting" # It is not working when CSI is in the beginning (1st or 2nd)
-sed "s|\.CSI|\.1WORKFLOW|g" EXPJCL1 > EXPJCL2
-sed "s|\.WORKFLOW|\.CSI|g" EXPJCL2 > EXPJCL3
-sed "s|\.1WORKFLOW|\.WORKFLOW|g" EXPJCL3 > EXPJCL4
-sed "s|DSNTYPE=LARGE|DSNTYPE=LARGE,VOL=SER=$VOLUME|g" EXPJCL4 > EXPJCL
-
-rm ./EXPJCL0
-rm ./EXPJCL1
-rm ./EXPJCL2
-rm ./EXPJCL3
-rm ./EXPJCL4
-
-else
+echo "Showing EXPORT JCL how it looks before the change"
+#if [ "$ZOSMF_V" = "2.3" ]
+#then
+#echo "Changing jobcard and adding SYSAFF"
+#sed "s|//IZUD01EX JOB (ACCOUNT),'NAME'|$JOBST1\n$JOBST2|g" EXPORT > EXPJCL0
+#
+#echo "Changing working directory from /tmp/ to ${WORK_MOUNT} directory where is zFS mounted"
+#sed "s|//SMPWKDIR DD PATH='/tmp/.*'|//SMPWKDIR DD PATH='$WORK_MOUNT'|g" EXPJCL0 > EXPJCL1
+#
+#echo "Switching WORKFLOW and CSI datasets because of internal GIMZIP setting" # It is not working when CSI is in the beginning (1st or 2nd)
+#sed "s|\.CSI|\.1WORKFLOW|g" EXPJCL1 > EXPJCL2
+#sed "s|\.WORKFLOW|\.CSI|g" EXPJCL2 > EXPJCL3
+#sed "s|\.1WORKFLOW|\.WORKFLOW|g" EXPJCL3 > EXPJCL4
+#sed "s|DSNTYPE=LARGE|DSNTYPE=LARGE,VOL=SER=$VOLUME|g" EXPJCL4 > EXPJCL
+#
+#rm ./EXPJCL0
+#rm ./EXPJCL1
+#rm ./EXPJCL2
+#rm ./EXPJCL3
+#rm ./EXPJCL4
+#
+#else
 echo "Changing jobcard and adding SYSAFF"
 sed "s|//IZUD01EX JOB (ACCOUNT),'NAME'|$JOBST1\n$JOBST2|g" EXPORT > EXPJCL 
-fi
+#fi
 
 sh scripts/submit_jcl.sh "`cat EXPJCL`"
 if [ $? -gt 0 ];then exit -1;fi
@@ -331,14 +332,14 @@ sh scripts/submit_jcl.sh "`cat JCL`"
 if [ $? -gt 0 ];then exit -1;fi
 rm JCL
 
-#cd ../.pax
+cd ../.pax
 set -x
 pwd
 sshpass -p${ZOSMF_PASS} sftp -o HostKeyAlgorithms=+ssh-rsa -o BatchMode=no -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -b - -P ${ZZOW_SSH_PORT} ${ZOSMF_USER}@${HOST} << EOF
 cd ${TMP_MOUNT}
 get ${SWI_NAME}.pax.Z
 EOF
-#cd ../pswi
+cd ../pswi
 
 #TODO: redirect everything to $log/x ? 
 #TODO: Check why there is name in mountpoints responses and it still doesn't show (although the mount points are different so it's good it is not doing anything)                      
