@@ -331,12 +331,14 @@ sh scripts/submit_jcl.sh "`cat JCL`"
 if [ $? -gt 0 ];then exit -1;fi
 rm JCL
 
-cd ../.pax
+#cd ../.pax
+set -x
+pwd
 sshpass -p${ZOSMF_PASS} sftp -o HostKeyAlgorithms=+ssh-rsa -o BatchMode=no -o StrictHostKeyChecking=no -o PubkeyAuthentication=no -b - -P ${ZZOW_SSH_PORT} ${ZOSMF_USER}@${HOST} << EOF
 cd ${TMP_MOUNT}
 get ${SWI_NAME}.pax.Z
 EOF
-cd ../pswi
+#cd ../pswi
 
 #TODO: redirect everything to $log/x ? 
 #TODO: Check why there is name in mountpoints responses and it still doesn't show (although the mount points are different so it's good it is not doing anything)                      

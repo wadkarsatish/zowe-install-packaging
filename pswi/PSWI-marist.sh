@@ -91,6 +91,13 @@ export WORKFLOW_DSN=${CSIHLQ}.WORKFLOW
 export ZOWE_ZFS="${CSIHLQ}.ZFS"
 export VERSION=$(cat ../manifest.json.template | grep -o '"version": ".*"' | head -1 | cut -f4 -d\")
 
+# Cleanup after the creation of PSWI
+sh 04_create_cleanup.sh
+# Cleanup of SMP/E
+sh 07_smpe_cleanup.sh
+# Clean RELFILEs and PTFs
+sh 08_presmpe_cleanup.sh
+      
 # Initialize variables
 presmpe=0
 smpe=0
@@ -122,7 +129,7 @@ if [ $presmpe -eq 0 ]; then
       # Create PSWI
       sh 03_create.sh
       create=$?
-exit -1
+
       # Cleanup after the creation of PSWI
       sh 04_create_cleanup.sh
       # Cleanup of SMP/E
