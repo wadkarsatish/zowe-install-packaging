@@ -122,7 +122,7 @@ if [ $presmpe -eq 0 ]; then
       # Create PSWI
       sh 03_create.sh
       create=$?
-
+exit -1
       # Cleanup after the creation of PSWI
       sh 04_create_cleanup.sh
       # Cleanup of SMP/E
@@ -144,11 +144,11 @@ if [ $presmpe -eq 0 ]; then
         # Cleanup after the test
         #sh 06_test_cleanup.sh
       fi
-    #else
+    else
       # Cleanup of SMP/E if PTF weren't successful - because the earlier cleanup runs only it it was success
-      # sh 07_smpe_cleanup.sh
+      sh 07_smpe_cleanup.sh
       # Clean RELFILEs and PTFs
-      #  sh 08_presmpe_cleanup.sh
+      sh 08_presmpe_cleanup.sh
     fi
   else
     # Cleanup of SMP/E if SMPE weren't successful - because the earlier cleanup runs only it it was success
