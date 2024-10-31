@@ -72,8 +72,8 @@ if [ -n "$MOUNTZ" ]; then
   if [ "$MOUNTZ/" = "$ZOWE_MOUNT" ]; then
     echo "${ZOWE_MOUNT} with zFS ${ZOWE_ZFS} mounted will be used."
   else
-    echo "The file system ${ZOWE_ZFS} exists but is mounted to different mount point ${MOUNTZ}." >>report.txt
-    echo "It is required to have the file system ${ZOWE_ZFS} mounted to the exact mount point (${ZOWE_MOUNT}) to successfully export Zowe PSWI." >>report.txt
+    echo "The file system ${ZOWE_ZFS} exists but is mounted to different mount point ${MOUNTZ}." >>$LOG_DIR/report.txt
+    echo "It is required to have the file system ${ZOWE_ZFS} mounted to the exact mount point (${ZOWE_MOUNT}) to successfully export Zowe PSWI." >>$LOG_DIR/report.txt
     exit -1
   fi
 else
@@ -82,7 +82,7 @@ else
   MOUNTZFS=$(echo $RESP | grep -o "name":".*" | cut -f4 -d\")
   if [ -n "$MOUNTZFS" ]; then
     # If ZFS is not mounted to the mountpoint then this ZOWE mountpoint has different zFS
-    echo "The mountpoint ${ZOWE_MOUNT} has different zFS ${MOUNTZFS}." >>report.txt
+    echo "The mountpoint ${ZOWE_MOUNT} has different zFS ${MOUNTZFS}." >>$LOG_DIR/report.txt
     exit -1
   else
     # Mount zFS to Zowe mountpoint
@@ -99,13 +99,13 @@ echo "Checking if WORKFLOW data set already exists."
 RESP=$(curl -s $CHECK_WORKFLOW_DSN_URL -k -X "GET" -H "Content-Type: application/json" -H "X-CSRF-ZOSMF-HEADER: A" --user $ZOSMF_USER:$ZOSMF_PASS)
 DS_COUNT=$(echo $RESP | grep -o '"returnedRows":[0-9]*' | cut -f2 -d:)
 if [ $DS_COUNT -ne 0 ]; then
-  echo "The ${WORKFLOW_DSN} already exist. Because there is a possibility that it contains something unwanted the script does not continue." >>report.txt
+  echo "The ${WORKFLOW_DSN} already exist. Because there is a possibility that it contains something unwanted the script does not continue." >>$LOG_DIR/report.txt
   exit -1
 else
   echo "Creating a data set where the post-Deployment workflow will be stored."
   RESP=$(curl -s $WORKFLOW_DSN_URL -k -X "POST" -d "$ADD_WORKFLOW_DSN_JSON" -H "Content-Type: application/json" -H "X-CSRF-ZOSMF-HEADER: A" --user $ZOSMF_USER:$ZOSMF_PASS)
   if [ -n "$RESP" ]; then
-    echo "The creation of the ${WORKFLOW_DSN} was not successful. Error message: ${RESP}" >>report.txt
+    echo "The creation of the ${WORKFLOW_DSN} was not successful. Error message: ${RESP}" >>$LOG_DIR/report.txt
     exit -1
   fi
 fi
@@ -162,7 +162,7 @@ echo "Checking if the data set for export jobs already exists."
 RESP=$(curl -s $CHECK_EXPORT_DSN_URL -k -X "GET" -H "Content-Type: application/json" -H "X-CSRF-ZOSMF-HEADER: A" --user $ZOSMF_USER:$ZOSMF_PASS)
 DSN_COUNT=$(echo $RESP | grep -o '"returnedRows":[0-9]*' | cut -f2 -d:)
 if [ $DSN_COUNT -ne 0 ]; then
-  echo "The ${EXPORT_DSN} already exist. Because there is a possibility that it contains something unwanted the script does not continue." >>report.txt
+  echo "The ${EXPORT_DSN} already exist. Because there is a possibility that it contains something unwanted the script does not continue." >>$LOG_DIR/report.txt
   exit -1
 else
   echo "Creating a data set where the export jobs will be stored."
@@ -196,7 +196,7 @@ if [ $? -gt 0 ]; then exit -1; fi
 
 LOAD_STATUS_URL=$(echo $RESP | grep -o '"statusurl":".*"' | cut -f4 -d\" | tr -d '\' 2>/dev/null)
 if [ -z "$LOAD_STATUS_URL" ]; then
-  echo "No response from the load product REST API call." >>report.txt
+  echo "No response from the load product REST API call." >>$LOG_DIR/report.txt
   exit -1
 fi
 
@@ -223,7 +223,7 @@ sh scripts/check_response.sh "${RESP}" $?
 if [ $? -gt 0 ]; then exit -1; fi
 EXPORT_STATUS_URL=$(echo $RESP | grep -o '"statusurl":".*"' | cut -f4 -d\" | tr -d '\' 2>/dev/null)
 if [ -z "$EXPORT_STATUS_URL" ]; then
-  echo "No response from the export REST API call." >>report.txt
+  echo "No response from the export REST API call." >>$LOG_DIR/report.txt
   exit -1
 fi
 
@@ -247,7 +247,7 @@ until [ "$STATUS" = "complete" ]; do
     echo "The status is: "$STATUS
     # Can be 100% but still running
     if [ "$STATUS" != "complete" ] && [ "$STATUS" != "running" ]; then
-      echo "Status of generation of Export JCL failed." >>report.txt
+      echo "Status of generation of Export JCL failed." >>$LOG_DIR/report.txt
       exit -1
     fi
   fi
@@ -255,7 +255,7 @@ until [ "$STATUS" = "complete" ]; do
 done
 
 if [ -z "$DSN" ]; then
-  echo "The creation of export JCL failed" >>report.txt
+  echo "The creation of export JCL failed" >>$LOG_DIR/report.txt
   exit -1
 fi
 

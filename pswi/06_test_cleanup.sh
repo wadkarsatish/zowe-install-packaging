@@ -2,7 +2,7 @@
 #version=1.0
 
 export BASE_URL="${ZOSMF_URL}:${ZOSMF_PORT}"
-LOG_FILE=$$LOG_DIR/log_test_cleanup.txt
+LOG_FILE=$LOG_DIR/log_test_cleanup.txt
 
 echo ""
 echo ""
