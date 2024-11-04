@@ -374,7 +374,7 @@ jobs:
         with:
           name: pswi-folder
           path: |
-            pswi/**
+            pswi/logs/**
 
       - name: '[K8S] Build Kubernetes'
         timeout-minutes: 10
