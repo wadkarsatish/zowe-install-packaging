@@ -55,11 +55,11 @@ pwd
 
 cp ../example-zowe.yaml example-zowe.yaml
 
-diff example-zowe.yaml zowe_.yaml > diff.txt || true
+diff example-zowe.yaml zowe_.yaml >diff.txt || true
 
-diff diff.txt scripts/base_diff.txt > final_diff.txt || true
+diff diff.txt scripts/base_diff.txt >final_diff.txt || true
 
-concat=`cat final_diff.txt`
+concat=$(cat final_diff.txt)
 
 if [ -n "$concat" ]
 then
