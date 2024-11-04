@@ -69,7 +69,11 @@ then
   echo "There are some discrepancies between the example-zowe.yaml and the zowe.yaml created by ZWECONF.xml workflow."
   echo "Please add or delete the workflow so everything is there."
   echo "First line is from the example and the line bellow is from the workflow."
-  #TODO: while loop final_diff.txt and delete every line that doesn't start with '<' and redirect into final_final_diff.txt and do cat final_final_diff.txt
-  echo $concat
+  while read -r line; do
+    if [[ "$line" =~ ^\< ]]; then
+      echo $line >> final_final_diff.txt
+    fi
+  done <final_diff.txt
+  cat final_final_diff.txt
   exit -1
 fi
