@@ -80,7 +80,8 @@ then
   done <final_diff.txt
   cat final_final_diff.txt
   echo "------------------------------------------------------------------------"
-  echo "First line is from the example and the line bellow is from the workflow."
+  echo "First line is from the example-zowe.yaml and the line bellow is from the"
+  echo "zowe.yaml created by the ZWECONF.xm workflow."
   cp final_final_diff.txt $LOG_DIR/diff_output.txt
   exit -1
 fi
