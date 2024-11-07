@@ -68,7 +68,7 @@ if [ -n "$concat" ]
 then
   echo "There are some discrepancies between the example-zowe.yaml and the zowe.yaml created by ZWECONF.xml workflow."
   echo "Please add to or delete from the ZWECONF.xml workflow what needs or doesn't need to be there."
-  echo "Eg. if there is a new variable you need to add it first to the workflow variables, then add the variable to the" 
+  echo "E.g. if there is a new variable you need to add it first to the workflow variables, then add the variable to the" 
   echo "'main_variables' step and then also to the step where the zowe.yaml is created."
   echo "If there was added/deleted just a comment in the example-zowe.yaml please add it also to the workflow so"
   echo "this step is not failing."
