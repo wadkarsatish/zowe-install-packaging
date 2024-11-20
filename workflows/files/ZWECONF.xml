@@ -459,10 +459,10 @@ How we want to verify SSL certificates of services. Valid values are:
         </string>
     </variable>
     <variable name="node_home" scope="instance" visibility="public">
-        <label>NodeJS home</label>
-        <abstract>Path to the NodeJS home</abstract>
-        <description>Path to the NodeJS home</description>
-        <category>node</category>
+        <label>Node.js home</label>
+        <abstract>Path to the Node.js home</abstract>
+        <description>Path to the Node.js home</description>
+        <category>Node.js</category>
         <string valueMustBeChoice="false" multiLine="false">
             <!-- Put validation here -->
             <!-- Specify choices here -->
@@ -1899,17 +1899,17 @@ echo '  home: "$!{instance-java_home}"' >> "${instance-zowe_runtimeDirectory}/zo
 echo '' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#-------------------------------------------------------------------------------' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
-echo '# node.js configuration' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
+echo '# Node.js configuration' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
-echo '# Some Zowe components requires node.js. Define the path where you have your' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
-echo '# node.js is installed.' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
+echo '# Some Zowe components requires Node.js. Define the path where you have your' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
+echo '# Node.js is installed.' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '# **NOTE**: this field can be updated automatically if you pass `--update-config`' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '# to `zwe init` command.' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#-------------------------------------------------------------------------------' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo 'node:' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '  # **COMMONLY_CUSTOMIZED**' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
-echo '  # Path to your node.js home directory' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
+echo '  # Path to your Node.js home directory' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '  home: "$!{instance-node_home}"' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
