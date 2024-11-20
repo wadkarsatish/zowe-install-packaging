@@ -276,7 +276,8 @@ TSS GENREQ(${instance-tss_acid}) +
                 </targetStateSet>
             </condition>
             <!--variableValues-->
-            <instructions substitution="true">This step will generate the CSR request into the ${instance-output_dataset}</instructions>
+            <instructions substitution="true"><![CDATA[This step will generate the CSR request into the ${instance-output_dataset}
+<p>This step uses ACF2 command GENREQ</p>]]></instructions>
             <weight>1</weight>
             <skills>Security Administrator</skills>
             <autoEnable>true</autoEnable>
@@ -303,7 +304,7 @@ GENREQ ${instance-acf2_acid} +
         <!-- condition -->
         <!--variableValues-->
         <instructions substitution="true"><![CDATA[Copies the CSR to the ${instance-uss_output_folder}request.csr
-<p>This step uses ACF2 command <a href="https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/command-reference/acf-subcommands/genreq-subcommand.html">GENREQ</a></p>]]></instructions>
+]]></instructions>
         <weight>1</weight>
         <skills>Security Administrator</skills>
         <autoEnable>true</autoEnable>
