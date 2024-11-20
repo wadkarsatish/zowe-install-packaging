@@ -2283,10 +2283,9 @@ zwe install -c '${instance-zowe_runtimeDirectory}/zowe.yaml' --allow-overwrite</
             Each <b>zwe init</b> sub-command defines a configuration. 
 <ul>
 <li><b>mvs:</b> Copy the data sets provided with Zowe to custom data sets.</li>
-<li><b>security:</b> Create the user IDs and security manager settings.</li>
-<li><b>apfauth:</b> APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.</li>
-<li><b>certificate:</b> Configure Zowe to use TLS certificates.</li>
+#if (${instance-components_caching_service_storage_mode} == "VSAM" && ${instance-components_caching_service_enabled})
 <li><b>vsam:</b> Configure the VSAM files needed to run the Zowe caching service used for high availability (HA).</li>
+#end
 <li><b>stc:</b> Configure the system to launch the Zowe started task.</li>
 </ul>
             ]]></instructions>
@@ -2320,18 +2319,14 @@ zwe init vsam -c '${instance-zowe_runtimeDirectory}/zowe.yaml' --allow-overwrite
             <!--variableValues-->
             <instructions substitution="true"><![CDATA[
             This step runs the commands: <br/>
-            <code>zwe init apfauth -c ${instance-zowe_runtimeDirectory}/zowe.yml</code> <br/>
             <code>zwe init security -c ${instance-zowe_runtimeDirectory}/zowe.yml --allow-overwrite</code> <br/>
+            <code>zwe init apfauth -c ${instance-zowe_runtimeDirectory}/zowe.yml</code> <br/>            
             <br/>
             <b>NOTE:</b>
             Each <b>zwe init</b> sub-command defines a configuration. 
 <ul>
-<li><b>mvs:</b> Copy the data sets provided with Zowe to custom data sets.</li>
 <li><b>security:</b> Create the user IDs and security manager settings.</li>
 <li><b>apfauth:</b> APF authorize the LOADLIB containing the modules that need to perform z/OS priviledged security calls.</li>
-<li><b>certificate:</b> Configure Zowe to use TLS certificates.</li>
-<li><b>vsam:</b> Configure the VSAM files needed to run the Zowe caching service used for high availability (HA).</li>
-<li><b>stc:</b> Configure the system to launch the Zowe started task.</li>
 </ul>
             ]]></instructions>
             <weight>1</weight>
