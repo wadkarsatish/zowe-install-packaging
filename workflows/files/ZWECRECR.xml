@@ -33,7 +33,7 @@
     <variable name="esm" scope="instance" visibility="public">
         <label>Security Manager</label>
         <abstract>Please, specify your security management software</abstract>
-        <description>Please, specify the ESM system you use on your workstation</description>
+        <description>Please, specify the ESM system you use</description>
         <category>General</category>
         <string valueMustBeChoice="true" multiLine="false">
             <!-- Put validation here -->
