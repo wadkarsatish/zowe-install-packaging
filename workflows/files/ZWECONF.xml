@@ -502,9 +502,9 @@ How we want to verify SSL certificates of services. Valid values are:
         </string>
     </variable>
     <variable name="components_gateway_enabled" scope="instance" visibility="public">
-        <label>Enable the gateway</label>
-        <abstract>Check this option to enable the gateway</abstract>
-        <description>Check this option to enable the gateway</description>
+        <label>Enable the Gateway</label>
+        <abstract>Check this option to enable the Gateway</abstract>
+        <description>Check this option to enable the Gateway</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -514,8 +514,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_port" scope="instance" visibility="public">
         <label>Gateway port</label>
-        <abstract>Port for the API ML gateway</abstract>
-        <description>Port for the API ML gateway</description>
+        <abstract>Port for the API ML Gateway</abstract>
+        <description>Port for the API ML Gateway</description>
         <category>components</category>
         <integer>
             <!-- Put validation here -->
@@ -525,8 +525,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_debug" scope="instance" visibility="public">
         <label>Gateway debug</label>
-        <abstract>Switch on the debug mode for the gateway</abstract>
-        <description>Switch on the debug mode for the gateway</description>
+        <abstract>Switch on the debug mode for the Gateway</abstract>
+        <description>Switch on the debug mode for the Gateway</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -569,8 +569,8 @@ How we want to verify SSL certificates of services. Valid values are:
   </variable>
     <variable name="components_gateway_apiml_security_auth_provider" scope="instance" visibility="public">
         <label>APIML security auth provider</label>
-        <abstract>Authorization provider for the gateway</abstract>
-        <description>Authorization provider for the gateway</description>
+        <abstract>Authorization provider for the Gateway</abstract>
+        <description>Authorization provider for the Gateway</description>
         <category>components</category>
         <string valueMustBeChoice="false" multiLine="false">
             <!-- Put validation here -->
@@ -580,8 +580,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_apiml_security_auth_zosmf_jwtAutoconfiguration" scope="instance" visibility="public">
         <label>APIML security auth z/OSMF jwtAutoconfiguration</label>
-        <abstract>JWT auto configuration for gateway security auth</abstract>
-        <description>JWT auto configuration for gateway security auth</description>
+        <abstract>JWT auto configuration for Gateway security auth</abstract>
+        <description>JWT auto configuration for Gateway security auth</description>
         <category>components</category>
         <string valueMustBeChoice="false" multiLine="false">
             <!-- Put validation here -->
@@ -593,8 +593,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_apiml_security_auth_zosmf_serviceId" scope="instance" visibility="public">
         <label>APIML security auth z/OSMF serviceId</label>
-        <abstract>Service ID for gateway security auth</abstract>
-        <description>Service ID for gateway security auth</description>
+        <abstract>Service ID for Gateway security auth</abstract>
+        <description>Service ID for Gateway security auth</description>
         <category>components</category>
         <string valueMustBeChoice="false" multiLine="false">
             <!-- Put validation here -->
@@ -615,8 +615,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_apiml_security_authorization_provider" scope="instance" visibility="public">
         <label>APIML security authorization provider</label>
-        <abstract>Security authorization provider for the gateway</abstract>
-        <description>Security authorization provider for the gateway</description>
+        <abstract>Security authorization provider for the Gateway</abstract>
+        <description>Security authorization provider for the Gateway</description>
         <category>components</category>
         <string valueMustBeChoice="false" multiLine="false">
             <!-- Put validation here -->
@@ -626,8 +626,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_apiml_security_x509_enabled" scope="instance" visibility="public">
         <label>Enable APIML security x509</label>
-        <abstract>Check to enable the gateway security x509</abstract>
-        <description>Check to enable the gateway security x509</description>
+        <abstract>Check to enable the Gateway security x509</abstract>
+        <description>Check to enable the Gateway security x509</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -1163,14 +1163,14 @@ How we want to verify SSL certificates of services. Valid values are:
         </step>
       <step name="gateway_component" optional="false">
         <title>Gateway variables</title>
-        <description>Specify the variables for the gateway component</description>
+        <description>Specify the variables for the Gateway component</description>
         <prereqStep name="main_variables"/>
         <condition>
           <expression>1 == 1</expression>
           <description>Always true</description>
           <targetStateSet>
             <extendStateExpression>
-              <description>Skipped if the gateway was not selected</description>
+              <description>Skipped if the Gateway was not selected</description>
               <expression>!${instance-components_gateway_enabled}</expression>
               <targetState>skipped</targetState>
             </extendStateExpression>
@@ -1184,7 +1184,7 @@ How we want to verify SSL certificates of services. Valid values are:
         <variableValue name="components_gateway_apiml_security_authorization_endpoint_enabled" scope="instance" noPromptIfSet="false" required="true"/>
         <variableValue name="components_gateway_apiml_security_authorization_provider" scope="instance" noPromptIfSet="false" required="false"/>
         <variableValue name="components_gateway_apiml_security_x509_enabled" scope="instance" noPromptIfSet="false" required="true"/>
-        <instructions substitution="false">Run this step to specify the cloud gateway variables</instructions>
+        <instructions substitution="false">Run this step to specify the Gateway variables</instructions>
         <weight>1</weight>
         <skills>z/OS System Programmer</skills>
         <autoEnable>false</autoEnable>
@@ -1208,7 +1208,7 @@ How we want to verify SSL certificates of services. Valid values are:
             </condition>
             <variableValue name="components_zaas_port" scope="instance" noPromptIfSet="false" required="true"/>
             <variableValue name="components_zaas_debug" scope="instance" noPromptIfSet="false" required="true"/>
-            <instructions substitution="true">Run this step to fill gateway component variables.</instructions>
+            <instructions substitution="true">Run this step to fill ZAAS component variables.</instructions>
             <weight>1</weight>
             <skills>z/OS System Programmer</skills>
             <autoEnable>false</autoEnable>
@@ -2170,7 +2170,7 @@ echo '#     sysname: LPR1' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#     # for this HA instance, we did not customize "components", so it will use default value.' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#   # HA instance ID, we will start 2 instances on LPAR2' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
-echo '#   # **NOTE**, we can only start one gateway in same LPAR.' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
+echo '#   # **NOTE**, we can only start one Gateway in same LPAR.' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#   lpar2a:' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#     # hostname where this instance will be started' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
 echo '#     hostname: lpar2.my-company.com' >> "${instance-zowe_runtimeDirectory}/zowe.yaml"
