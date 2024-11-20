@@ -2266,8 +2266,8 @@ zwe install -c '${instance-zowe_runtimeDirectory}/zowe.yaml' --allow-overwrite</
             </template>
         </step>
         <step name="init_zowe" optional="false">
-            <title>Run the Zowe init</title>
-            <description>Executes the Zowe initialization</description>
+            <title>Run scripts for Zowe initialization</title>
+            <description>Executes scripts for Zowe initialization</description>
             <prereqStep name="install_zowe"/>
             <!-- condition -->
             <!--variableValues-->
@@ -2314,8 +2314,8 @@ zwe init vsam -c '${instance-zowe_runtimeDirectory}/zowe.yaml' --allow-overwrite
             </template>
         </step>
         <step name="init_zowe_security" optional="false">
-            <title>Run the Zowe init security</title>
-            <description>Executes the Zowe initialization for security setup</description>
+            <title>Run scripts for Zowe security initialization</title>
+            <description>Executes Zowe initialization scripts for security setup</description>
             <prereqStep name="install_zowe"/>
             <!--variableValues-->
             <instructions substitution="true"><![CDATA[
