@@ -514,8 +514,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_port" scope="instance" visibility="public">
         <label>Gateway port</label>
-        <abstract>Port for the API ML Gateway</abstract>
-        <description>Port for the API ML Gateway</description>
+        <abstract>Port for the APIML Gateway</abstract>
+        <description>Port for the APIML Gateway</description>
         <category>components</category>
         <integer>
             <!-- Put validation here -->
