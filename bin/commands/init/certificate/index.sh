@@ -95,13 +95,17 @@ elif [[ "${cert_type}" == JCE*KS ]]; then
     keyring_option=2
   fi
 fi
+# Trace or debug information will be part of the output, let's turn it off for the inline zwe commands
+save_trace=$ZWE_PRIVATE_LOG_LEVEL_ZWELS
+ZWE_PRIVATE_LOG_LEVEL_ZWELS=
 # read keystore domains
-cert_import_CAs=$(read_yaml_configmgr "${ZWE_CLI_PARAMETER_CONFIG}" ".zowe.setup.certificate.importCertificateAuthorities" | tr '\n' ',')
+cert_import_CAs=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.setup.certificate.importCertificateAuthorities" | tr '\n' ',')
 # read keystore domains
-cert_domains=$(read_yaml_configmgr "${ZWE_CLI_PARAMETER_CONFIG}" ".zowe.setup.certificate.san" | tr '\n' ',')
+cert_domains=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.setup.certificate.san" | tr '\n' ',')
 if [ -z "${cert_domains}" ]; then
-  cert_domains=$(read_yaml_configmgr "${ZWE_CLI_PARAMETER_CONFIG}" ".zowe.externalDomains" | tr '\n' ',')
+  cert_domains=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.externalDomains" | tr '\n' ',')
 fi
+ZWE_PRIVATE_LOG_LEVEL_ZWELS=$save_trace
 
 # read z/OSMF info
 for item in user ca; do
