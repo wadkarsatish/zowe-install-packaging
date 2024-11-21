@@ -502,9 +502,9 @@ How we want to verify SSL certificates of services. Valid values are:
         </string>
     </variable>
     <variable name="components_gateway_enabled" scope="instance" visibility="public">
-        <label>Enable the Gateway</label>
-        <abstract>Check this option to enable the Gateway</abstract>
-        <description>Check this option to enable the Gateway</description>
+        <label>Enable Gateway</label>
+        <abstract>Check this option to enable Gateway</abstract>
+        <description>Check this option to enable Gateway</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -525,8 +525,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_gateway_debug" scope="instance" visibility="public">
         <label>Gateway debug</label>
-        <abstract>Switch on the debug mode for the Gateway</abstract>
-        <description>Switch on the debug mode for the Gateway</description>
+        <abstract>Switch on the debug mode for Gateway</abstract>
+        <description>Switch on the debug mode for Gateway</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -535,9 +535,9 @@ How we want to verify SSL certificates of services. Valid values are:
         </boolean>
     </variable>
     <variable name="components_zaas_enabled" scope="instance" visibility="public">
-      <label>Enable ZAAS</label>
-      <abstract>Should the APIML ZAAS be enabled?</abstract>
-      <description>Should the APIML ZAAS be enabled?</description>
+      <label>Enable APIML ZAAS</label>
+      <abstract>Check this option to enable APIML ZAAS</abstract>
+      <description>Check this option to enable APIML ZAAS</description>
       <category>components</category>
       <boolean>
         <!-- Put validation here -->
@@ -547,8 +547,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
   <variable name="components_zaas_port" scope="instance" visibility="public">
     <label>ZAAS port</label>
-    <abstract>Port for the APIML ZAAS</abstract>
-    <description>Port for the APIML ZAAS</description>
+    <abstract>Port for APIML ZAAS</abstract>
+    <description>Port for APIML ZAAS</description>
     <category>components</category>
     <integer>
       <!-- Put validation here -->
@@ -558,8 +558,8 @@ How we want to verify SSL certificates of services. Valid values are:
   </variable>
   <variable name="components_zaas_debug" scope="instance" visibility="public">
     <label>ZAAS debug</label>
-    <abstract>Switch on the debug mode for the ZAAS</abstract>
-    <description>Switch on the debug mode for the ZAAS</description>
+    <abstract>Switch on the debug mode for ZAAS</abstract>
+    <description>Switch on the debug mode for ZAAS</description>
     <category>components</category>
     <boolean>
       <!-- Put validation here -->
@@ -637,8 +637,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_api_catalog_enabled" scope="instance" visibility="public">
         <label>Enable API Catalog</label>
-        <abstract>Check this option to enable the API Catalog</abstract>
-        <description>Check this option to enable the API Catalog</description>
+        <abstract>Check this option to enable API Catalog</abstract>
+        <description>Check this option to enable API Catalog</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -669,9 +669,9 @@ How we want to verify SSL certificates of services. Valid values are:
         </boolean>
     </variable>
     <variable name="components_discovery_enabled" scope="instance" visibility="public">
-        <label>Enable the Discovery service</label>
-        <abstract>Check this option to enable the Discovery service</abstract>
-        <description>Check this option to enable the Discovery service</description>
+        <label>Enable Discovery service</label>
+        <abstract>Check this option to enable Discovery service</abstract>
+        <description>Check this option to enable Discovery service</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -681,8 +681,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_discovery_port" scope="instance" visibility="public">
         <label>Discovery port</label>
-        <abstract>Port on which the Discovery service should be running</abstract>
-        <description>Port on which the Discovery service should be running</description>
+        <abstract>Port on which Discovery service should be running</abstract>
+        <description>Port on which Discovery service should be running</description>
         <category>components</category>
         <integer>
             <!-- Put validation here -->
@@ -702,9 +702,9 @@ How we want to verify SSL certificates of services. Valid values are:
         </boolean>
     </variable>
     <variable name="components_caching_service_enabled" scope="instance" visibility="public">
-        <label>Enable the Caching service</label>
-        <abstract>Check this option to enable the Caching service</abstract>
-        <description>Check this option to enable the Caching service</description>
+        <label>Enable Caching service</label>
+        <abstract>Check this option to enable Caching service</abstract>
+        <description>Check this option to enable Caching service</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -714,8 +714,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_caching_service_port" scope="instance" visibility="public">
         <label>Caching service port</label>
-        <abstract>Port for the caching service</abstract>
-        <description>Port for the caching service</description>
+        <abstract>Port for Caching service</abstract>
+        <description>Port for Caching service</description>
         <category>components</category>
         <integer>
             <!-- Put validation here -->
@@ -802,9 +802,9 @@ How we want to verify SSL certificates of services. Valid values are:
         </string>
     </variable>
     <variable name="components_app_server_enabled" scope="instance" visibility="public">
-        <label>Enable the app server</label>
-        <abstract>Check this option to enable the app server</abstract>
-        <description>Check this option to enable the app server.</description>
+        <label>Enable App server</label>
+        <abstract>Check this option to enable App server</abstract>
+        <description>Check this option to enable App server.</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -825,8 +825,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_app_server_port" scope="instance" visibility="public">
         <label>App server port</label>
-        <abstract>Port for the app server</abstract>
-        <description>Port for the app server</description>
+        <abstract>Port for App server</abstract>
+        <description>Port for App server</description>
         <category>components</category>
         <integer>
             <!-- Put validation here -->
@@ -891,8 +891,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_explorer_jes_enabled" scope="instance" visibility="public">
         <label>Enable explorer JES</label>
-        <abstract>Check this option to enable the JES explorer</abstract>
-        <description>Check this option to enable the JES explorer.</description>
+        <abstract>Check this option to enable JES explorer</abstract>
+        <description>Check this option to enable JES explorer.</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -902,8 +902,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_explorer_mvs_enabled" scope="instance" visibility="public">
         <label>Enable explorer MVS</label>
-        <abstract>Check this option to enable the MVS explorer</abstract>
-        <description>Check this option to enable the MVS explorer.</description>
+        <abstract>Check this option to enable MVS explorer</abstract>
+        <description>Check this option to enable MVS explorer.</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
@@ -913,8 +913,8 @@ How we want to verify SSL certificates of services. Valid values are:
     </variable>
     <variable name="components_explorer_uss_enabled" scope="instance" visibility="public">
         <label>Enable explorer USS</label>
-        <abstract>Check this option to enable the USS explorer</abstract>
-        <description>Check this option to enable the USS explorer.</description>
+        <abstract>Check this option to enable USS explorer</abstract>
+        <description>Check this option to enable USS explorer.</description>
         <category>components</category>
         <boolean>
             <!-- Put validation here -->
