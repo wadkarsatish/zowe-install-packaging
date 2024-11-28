@@ -99,11 +99,11 @@ fi
 save_trace=$ZWE_PRIVATE_LOG_LEVEL_ZWELS
 ZWE_PRIVATE_LOG_LEVEL_ZWELS=
 # read keystore domains
-cert_import_CAs=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.setup.certificate.importCertificateAuthorities" | tr '\n' ',')
+cert_import_CAs=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.setup.certificate.importCertificateAuthorities" | tr '\n' ',' | awk '{ print substr( $0, 1, length($0)-1 ) }')
 # read keystore domains
-cert_domains=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.setup.certificate.san" | tr '\n' ',')
+cert_domains=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.setup.certificate.san" | tr '\n' ',' | awk '{ print substr( $0, 1, length($0)-1 ) }')
 if [ -z "${cert_domains}" ]; then
-  cert_domains=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.externalDomains" | tr '\n' ',')
+  cert_domains=$(zwecli_inline_execute_command internal config get --config "${ZWE_CLI_PARAMETER_CONFIG}" --path ".zowe.externalDomains" | tr '\n' ',' | awk '{ print substr( $0, 1, length($0)-1 ) }')
 fi
 ZWE_PRIVATE_LOG_LEVEL_ZWELS=$save_trace
 
